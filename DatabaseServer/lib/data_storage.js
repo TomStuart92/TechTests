@@ -3,8 +3,8 @@ function DataStorage (){
 }
 
 DataStorage.prototype =  {
-  addToState: function(key, value) {
-    this._state[key] = value;
+  addToState: function(object) {
+    Object.assign(this._state, object)
   },
   retrieveValue: function(key) {
     return this._state[key]

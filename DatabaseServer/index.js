@@ -9,9 +9,9 @@ this.server = http.createServer(function (req, res) {
   var dataStorage = new DataStorage
 
   if (parsedURL.pathname == "/set" && req.method == 'GET') {
+    dataStorage.addToState(params)
     res.writeHead(201, {'Content-Type': 'text/css'});
-    console.log(params);
-    res.end(parsedURL.query);
+    res.end(parsedURL.query + " Added to Database");
   }
 
   else {
