@@ -2,11 +2,12 @@ var http = require('http');
 var url = require('url');
 var queryString = require('querystring');
 var DataStorage = require('./lib/data_storage.js')
+var dataStorage = new DataStorage
 
 this.server = http.createServer(function (req, res) {
   var parsedURL = url.parse(req.url)
   var params = queryString.parse(parsedURL.query)
-  var dataStorage = new DataStorage
+
 
   if (parsedURL.pathname == "/set" && req.method == 'GET') {
     dataStorage.addToState(params)
@@ -14,10 +15,10 @@ this.server = http.createServer(function (req, res) {
     res.end(parsedURL.query + " Added to Database");
   }
 
-  else if (parsedURL.pathname == "/set" && req.method == 'GET') {
-    var item = dataStorage.retrieveKey(params)
+  else if (parsedURL.pathname == "/get" && req.method == 'GET') {
+    var item = dataStorage.retrieveValue(params)
     res.writeHead(200, {'Content-Type': 'text/css'});
-    res.end(item);
+    res.end("Value retrieved - " + item);
   }
 
   else {
