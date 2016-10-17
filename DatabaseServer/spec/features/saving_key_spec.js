@@ -14,10 +14,10 @@ describe("saving_key_to_object", function() {
   });
 
   it("should successfully return params data on /set path", function(next) {
-      browser.visit(url + '/set?name=tom', function(err) {
-          expect(browser.html("body")).toContain("name=tom")
-          next();
-      })
+    browser.visit(url + '/set?name=tom', function(err) {
+      expect(browser.html("body")).toContain("name=tom")
+      next();
+    })
   });
 
 
