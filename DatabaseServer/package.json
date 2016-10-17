@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/TomStuart92/TechTests/issues"
   },
-  "homepage": "https://github.com/TomStuart92/TechTests#readme"
+  "homepage": "https://github.com/TomStuart92/TechTests#readme",
+  "dependencies": {
+    "http-server": "^0.9.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.2",
+    "jasmine-node": "^1.14.5",
+    "zombie": "^4.2.1"
+  }
 }
