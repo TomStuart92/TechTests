@@ -1,0 +1,23 @@
+{
+  "name": "database_server",
+  "version": "1.0.0",
+  "description": "Database Server for Tech Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomStuart92/TechTests.git"
+  },
+  "keywords": [
+    "Database",
+    "Server"
+  ],
+  "author": "Tom Stuart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TomStuart92/TechTests/issues"
+  },
+  "homepage": "https://github.com/TomStuart92/TechTests#readme"
+}
