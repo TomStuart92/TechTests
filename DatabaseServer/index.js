@@ -18,7 +18,7 @@ this.server = http.createServer(function (req, res) {
   else if (parsedURL.pathname == "/get" && req.method == 'GET') {
     var item = dataStorage.retrieveValue(params)
     res.writeHead(200, {'Content-Type': 'text/css'});
-    res.end("Value retrieved - " + item);
+    res.end(item);
   }
 
   else {

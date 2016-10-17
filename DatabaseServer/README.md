@@ -2,6 +2,13 @@
 
 This is a solution to the [First Makers Academy TechTest.](https://github.com/makersacademy/course/blob/master/individual_challenges/database_server.md)
 
+```
+Before your interview, write a program that runs a server that is accessible on http://localhost:4000/.
+When your server receives a request on http://localhost:4000/set?somekey=somevalue it should store the passed key and value in memory.
+When it receives a request on http://localhost:4000/get?key=somekey it should return the value stored at somekey.
+During your [mock] interview, you will pair on saving the data to a file.
+```
+
 ## Instructions
 
 - Clone Repository to your local machine.
@@ -25,3 +32,13 @@ tuna retrieved from the database
 ```
 
 ## Design Notes
+
+For simplicity the server is built on core NodeJS. The server is provided using the HTTP_Server package.
+
+Jasmine-Node and Zombie are used for testing.
+
+QueryString and URL are used for parsing params. 
+
+## Saving to Database
+
+Adding a database to the system is a simple matter of amending the DataStorage module to become a wrapper for whatever database ORM is needed.

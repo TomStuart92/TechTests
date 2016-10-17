@@ -16,7 +16,7 @@ describe("retrieving_key_from_object", function() {
   it("should successfully return params data on /set path", function(next) {
     browser.visit(url + '/set?name=tom', function(err) {
       browser.visit(url + '/get?key=name', function(err) {
-        expect(browser.html("body")).toContain("Value retrieved - tom")
+        expect(browser.html("body")).toContain("tom")
         next();
       })
     });
