@@ -3,22 +3,32 @@ function DataStorage (){
 }
 
 DataStorage.prototype =  {
-  addToState: function(obj, callback) {
-    for(var key in obj) {
-      if (obj[key] === '') {
-        return callback('{"message":"Incorrect Request Format"}', null)
-      }
-        Object.assign(this._state, obj)
-        callback(null, obj)
+  addToState: function(string, callback) {
+    var obj = this._parseURI(string)
+    if (!obj) {
+      return callback('{"message":"Incorrect Request Format"}', null)
+    }
+    Object.assign(this._state, obj);
+    callback(null, obj)
+  },
+
+  retrieveValue: function(string, callback) {
+    var key = (this._parseURI(string) || {})['key']
+    if (this._state[key]) {
+      callback(null, this._state[key])
+    }
+    else {
+      callback('{"message":"Resource Not Found"}', null)
     }
   },
 
-  retrieveValue: function(obj, callback) {
-    var key = obj["key"]
-    if (this._state[key])
-      callback(null, this._state[key])
+  _parseURI: function(str){
+    var stringMatch = (str || "").match(/(\w+)=(\w+)/);
+    if (!stringMatch) { return null }
     else {
-      callback('{"message":"Resource Not Found"}', null)
+      var results = {}
+      results[stringMatch[1]] = stringMatch[2]
+      return results;
     }
   }
 };

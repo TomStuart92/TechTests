@@ -27,4 +27,12 @@ describe("saving_key_to_object", function() {
       next();
     })
   });
+
+  it("should return error on no params", function(next) {
+    request(url + '/set', function(error, response, body){
+      expect(response.statusCode).toEqual(400);
+      expect(body).toEqual('{"message":"Incorrect Request Format"}');
+      next();
+    })
+  });
 });

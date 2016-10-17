@@ -31,10 +31,10 @@ this.server = http.createServer(function (req, res) {
   }
 
   if (parsedURL.pathname == "/set" && req.method == 'GET') {
-    dataStorage.addToState(params, send_set_response)
+    dataStorage.addToState(parsedURL.query, send_set_response)
   }
   else if (parsedURL.pathname == "/get" && req.method == 'GET') {
-    dataStorage.retrieveValue(params, send_get_response)
+    dataStorage.retrieveValue(parsedURL.query, send_get_response)
   }
   else {
     res.writeHead(404, {'Content-Type': 'text/css'});
