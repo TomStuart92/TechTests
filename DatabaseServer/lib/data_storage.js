@@ -6,7 +6,8 @@ DataStorage.prototype =  {
   addToState: function(object) {
     Object.assign(this._state, object)
   },
-  retrieveValue: function(key) {
+  retrieveValue: function(object) {
+    var key = object["key"]
     return this._state[key]
   }
 };

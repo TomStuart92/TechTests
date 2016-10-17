@@ -17,6 +17,6 @@ describe("Data Storage Module", function() {
 
   it("can retrieve items from state", function() {
     dataStorage.addToState({ name: 'tom' })
-    expect(dataStorage.retrieveValue("name")).toEqual("tom");
+    expect(dataStorage.retrieveValue({ key: 'name' })).toEqual("tom");
   });
 });

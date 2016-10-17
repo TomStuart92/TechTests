@@ -14,6 +14,12 @@ this.server = http.createServer(function (req, res) {
     res.end(parsedURL.query + " Added to Database");
   }
 
+  else if (parsedURL.pathname == "/set" && req.method == 'GET') {
+    var item = dataStorage.retrieveKey(params)
+    res.writeHead(200, {'Content-Type': 'text/css'});
+    res.end(item);
+  }
+
   else {
     res.writeHead(404, {'Content-Type': 'text/css'});
     res.end("Resource Not Found");
