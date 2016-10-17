@@ -13,11 +13,18 @@ describe("saving_key_to_object", function() {
   });
 
   it("should successfully return params data on /set path", function(next) {
-    request(url + '/set?name=tom', function(err, res, body){
-      expect(body).toContain("name=tom")
+    request(url + '/set?name=tom', function(error, response, body){
+      expect(response.statusCode).toEqual(201);
+      expect(body).toEqual('{"name":"tom"}');
       next();
     })
   });
 
-
+  it("should return error on incorrect format", function(next) {
+    request(url + '/set?nametom', function(error, response, body){
+      expect(response.statusCode).toEqual(400);
+      expect(body).toEqual('{"message":"Incorrect Request Format"}');
+      next();
+    })
+  });
 });

@@ -35,9 +35,9 @@ tuna retrieved from the database
 
 For simplicity the server is built on core NodeJS. The server is provided using the HTTP_Server package.
 
-Jasmine-Node and Zombie are used for testing.
+Jasmine-Node and Request are used for testing.
 
-QueryString and URL are used for parsing params. 
+QueryString and URL are used for parsing params.
 
 ## Saving to Database
 

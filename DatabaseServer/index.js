@@ -5,14 +5,21 @@ var DataStorage = require('./lib/data_storage.js')
 var dataStorage = new DataStorage
 
 this.server = http.createServer(function (req, res) {
-  var parsedURL = url.parse(req.url)
-  var params = queryString.parse(parsedURL.query)
+  var parsedURL = url.parse(req.url);
+  var params = queryString.parse(parsedURL.query);
 
 
   if (parsedURL.pathname == "/set" && req.method == 'GET') {
-    dataStorage.addToState(params)
-    res.writeHead(201, {'Content-Type': 'text/css'});
-    res.end(parsedURL.query + " Added to Database");
+    dataStorage.addToState(params, function(err, success){
+      if (err) {
+        res.writeHead(400, {'Content-Type': 'JSON'});
+        res.end(err);
+      }
+      else {
+        res.writeHead(201, {'Content-Type': 'JSON'});
+        res.end(JSON.stringify(params));
+      }
+    });
   }
 
   else if (parsedURL.pathname == "/get" && req.method == 'GET') {
