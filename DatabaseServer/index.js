@@ -8,26 +8,34 @@ this.server = http.createServer(function (req, res) {
   var parsedURL = url.parse(req.url);
   var params = queryString.parse(parsedURL.query);
 
+  var send_set_response = function(err, success){
+    if (err) {
+      res.writeHead(400, {'Content-Type': 'JSON'});
+      res.end(err);
+    }
+    else {
+      res.writeHead(201, {'Content-Type': 'JSON'});
+      res.end(JSON.stringify(params));
+    }
+  };
+
+  var send_get_response = function (err, success) {
+    if (err) {
+      res.writeHead(400, {'Content-Type': 'JSON'});
+      res.end(err);
+    }
+    else {
+      res.writeHead(200, {'Content-Type': 'text/css'});
+      res.end(success);
+    }
+  }
 
   if (parsedURL.pathname == "/set" && req.method == 'GET') {
-    dataStorage.addToState(params, function(err, success){
-      if (err) {
-        res.writeHead(400, {'Content-Type': 'JSON'});
-        res.end(err);
-      }
-      else {
-        res.writeHead(201, {'Content-Type': 'JSON'});
-        res.end(JSON.stringify(params));
-      }
-    });
+    dataStorage.addToState(params, send_set_response)
   }
-
   else if (parsedURL.pathname == "/get" && req.method == 'GET') {
-    var item = dataStorage.retrieveValue(params)
-    res.writeHead(200, {'Content-Type': 'text/css'});
-    res.end(item);
+    dataStorage.retrieveValue(params, send_get_response)
   }
-
   else {
     res.writeHead(404, {'Content-Type': 'text/css'});
     res.end("Resource Not Found");
