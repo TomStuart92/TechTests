@@ -22,7 +22,6 @@
   "homepage": "https://github.com/TomStuart92/TechTests#readme",
   "dependencies": {
     "http-server": "^0.9.0",
-    "querystring": "^0.2.0",
     "url": "^0.11.0"
   },
   "devDependencies": {

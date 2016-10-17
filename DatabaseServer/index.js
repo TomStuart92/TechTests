@@ -1,12 +1,10 @@
 var http = require('http');
 var url = require('url');
-var queryString = require('querystring');
 var DataStorage = require('./lib/data_storage.js')
 var dataStorage = new DataStorage
 
 this.server = http.createServer(function (req, res) {
   var parsedURL = url.parse(req.url);
-  var params = queryString.parse(parsedURL.query);
 
   var send_set_response = function(err, success){
     if (err) {
@@ -15,7 +13,7 @@ this.server = http.createServer(function (req, res) {
     }
     else {
       res.writeHead(201, {'Content-Type': 'JSON'});
-      res.end(JSON.stringify(params));
+      res.end(success);
     }
   };
 

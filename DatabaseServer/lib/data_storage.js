@@ -9,13 +9,13 @@ DataStorage.prototype =  {
       return callback('{"message":"Incorrect Request Format"}', null)
     }
     Object.assign(this._state, obj);
-    callback(null, obj)
+    callback(null, JSON.stringify(obj))
   },
 
   retrieveValue: function(string, callback) {
     var key = (this._parseURI(string) || {})['key']
     if (this._state[key]) {
-      callback(null, this._state[key])
+      callback(null, JSON.stringify({requested_value: this._state[key]}))
     }
     else {
       callback('{"message":"Resource Not Found"}', null)
