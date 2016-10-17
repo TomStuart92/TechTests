@@ -1,7 +1,7 @@
 var Browser = require("zombie");
 var browser = new Browser();
 var server = require('../../index.js');
-var url = "http://localhost:4000/";
+var url = "http://localhost:4000";
 
 describe("saving_key_to_object", function() {
 
@@ -13,11 +13,12 @@ describe("saving_key_to_object", function() {
     server.close();
   });
 
-  it("should successfully visit site", function(next) {
-      browser.visit(url, function(err) {
-          expect(browser.success).toBe(true);
-          expect(browser.html("body")).toContain("Welcome to the Database Server")
+  it("should successfully return params data on /set path", function(next) {
+      browser.visit(url + '/set?name=tom', function(err) {
+          expect(browser.html("body")).toContain("name=tom")
           next();
       })
   });
+
+
 });

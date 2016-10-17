@@ -3,12 +3,17 @@ var url = require('url');
 
 this.server = http.createServer(function (req, res) {
 
-  if (req.url == "/" && req.method == 'GET') {
-    res.writeHead(200, {'Content-Type': 'text/css'});
-    res.write("Welcome to the Database Server")
-    res.end();
+var parsedURL = url.parse(req.url)
+
+  if (parsedURL.pathname == "/set" && req.method == 'GET') {
+    res.writeHead(201, {'Content-Type': 'text/css'});
+    res.end(parsedURL.query);
   }
 
+  else {
+    res.writeHead(404, {'Content-Type': 'text/css'});
+    res.end("Resource Not Found");
+  }
 
 });
 
