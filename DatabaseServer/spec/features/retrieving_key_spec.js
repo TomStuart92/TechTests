@@ -1,12 +1,12 @@
-var Browser = require("zombie");
-var browser = new Browser();
 var server = require('../../index.js');
-var url = "http://localhost:4000";
+var request = require('request');
+var url = "http://localhost:5000";
 
 describe("retrieving_key_from_object", function() {
 
-  beforeEach(function(){
-    server.listen(4000);
+  beforeEach(function(next){
+    server.listen(5000);
+    request(url + '/set?name=tom', function(err, res, body){next()});
   });
 
   afterEach(function(){
@@ -14,11 +14,9 @@ describe("retrieving_key_from_object", function() {
   });
 
   it("should successfully return params data on /set path", function(next) {
-    browser.visit(url + '/set?name=tom', function(err) {
-      browser.visit(url + '/get?key=name', function(err) {
-        expect(browser.html("body")).toContain("tom")
-        next();
-      })
+    request(url + '/get?key=name', function(err, res, body){
+      expect(body).toContain("tom");
+      next();
     });
   });
 
