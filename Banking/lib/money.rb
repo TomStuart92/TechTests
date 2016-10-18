@@ -1,9 +1,9 @@
-# understands how to record transaction statements
+# understands how to keey track of transaction value
 
 class Money
-  def initialize(value)
-    @value = value
-    @currency = "GBP"
+  def initialize(value = 0)
+   raise "Please Provide Integer Value" unless value.is_a? Integer
+   @value = value
   end
 
   def value
@@ -14,12 +14,9 @@ class Money
      "£"+sprintf( "%0.02f", @value)
   end
 
-# protected
   def +(other)
+    raise "Can only add Instance of Money Class" unless other.is_a? Money
     return Money.new(self.value + other.value)
   end
 
-  def -(other)
-    return Money.new(self.value - other.value)
-  end
 end
