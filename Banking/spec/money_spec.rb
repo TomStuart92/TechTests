@@ -19,7 +19,7 @@ describe Money do
     end
 
     it 'has a string formatted value in pounds for debits' do
-      expect(minus_amount.formatted).to eq('|| £-500.00 ')
+      expect(minus_amount.formatted).to eq('|| £-500.00')
     end
   end
 

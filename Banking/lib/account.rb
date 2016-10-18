@@ -32,7 +32,7 @@ class Account
 
   def validate_transaction(date, amt)
     parsed = validate_date(date)
-    raise 'Can only transact integer amounts' unless amount.is_a? Integer
+    raise 'Can only transact integer amounts' unless amt.is_a? Integer
     { date: parsed, amount: money_class.new(amt), balance: current_balance }
   end
 
