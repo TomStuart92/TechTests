@@ -34,7 +34,7 @@ describe("Data Storage Module", function() {
   it("can retrieve items from state", function(next) {
     dataStorage.addToState("name=tom", function(err, success){})
     dataStorage.retrieveValue("key=name", function(err, success){
-      expect(err).toEqual(null);
+      expect(success).toEqual('{"requested_value":"tom"}');
       next();
     })
   });
