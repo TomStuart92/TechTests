@@ -1,13 +1,12 @@
-# understands how to keep track of transaction value
-
+# Understands how to keep track of transaction value
 class Money
   def initialize(value = 0)
-   raise "Please Provide Integer Value" unless value.is_a? Integer
-   @value = value
+    raise 'Please Use Integer Value' unless value.is_a? Integer
+    @value = value
   end
 
   def to_s
-    "£"+sprintf( "%0.02f", value)
+    '£' + format('%0.02f', value)
   end
 
   def formatted
@@ -15,13 +14,13 @@ class Money
   end
 
   def +(other)
-    raise "Can only add Instance of Money Class" unless other.is_a? Money
-    return Money.new(value + other.get_value)
+    raise 'Please add Money instance' unless other.is_a? Money
+    Money.new(value + other.compare_value)
   end
 
   protected
 
-  def get_value
+  def compare_value
     value
   end
 

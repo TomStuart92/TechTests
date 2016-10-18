@@ -1,7 +1,5 @@
-# understands how to record transactions
-
+# Understands how to record transactions
 class Statement
-
   def initialize
     @account_history = []
   end
@@ -13,12 +11,14 @@ class Statement
   def to_s
     output = "date || credit || debit || balance\n"
     account_history.each do |transaction|
-      output << "#{transaction[:date]} || #{transaction[:amount].formatted} || #{transaction[:balance]}\n"
+      output << "#{transaction[:date]} ||"
+      output << " #{transaction[:amount].formatted} ||"
+      output << " #{transaction[:balance]}\n"
     end
-    return output
+    output
   end
 
   private
-  attr_reader :account_history
 
+  attr_reader :account_history
 end
