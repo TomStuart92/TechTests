@@ -1,12 +1,22 @@
 ## Banking TechTest
 
-This is a solution to the [Second Makers Academy TechTest.](https://github.com/makersacademy/course/blob/master/individual_challenges/database_server.md)
+This is a solution to the [Second Makers Academy TechTest.](https://github.com/makersacademy/course/blob/master/individual_challenges/bank_tech_test.md)
 
 ```
-Before your interview, write a program that runs a server that is accessible on http://localhost:4000/.
-When your server receives a request on http://localhost:4000/set?somekey=somevalue it should store the passed key and value in memory.
-When it receives a request on http://localhost:4000/get?key=somekey it should return the value stored at somekey.
-During your [mock] interview, you will pair on saving the data to a file.
+Requirements
+
+You should be able to interact with the your code via IRB. (You don't need to implement a command line interface that takes input from STDIN.)
+Deposits, withdrawal.
+Account statement (date, amount, balance) printing.
+Data can be kept in memory (it doesn't need to be stored to a database or anything).
+Acceptance criteria
+
+Given a client makes a deposit of 1000 on 10-01-2012 And a deposit of 2000 on 13-01-2012 And a withdrawal of 500 on 14-01-2012 When she prints her bank statement Then she would see
+
+date       || credit || debit   || balance
+14/01/2012 ||        || 500.00  || 2500.00
+13/01/2012 || 2000.00||         || 3000.00
+10/01/2012 || 1000.00||         || 1000.00
 ```
 
 ## Instructions
@@ -52,4 +62,4 @@ The program is built around three core classes:
 
 Classes dependencies are injected, and public interfaces minimised to keep them loosely coupled.
 
-Program is fully tested (100% coverage) using RSpec. 
+Program is fully tested (100% coverage) using RSpec.
