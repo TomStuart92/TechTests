@@ -1,4 +1,4 @@
-# understands how to keey track of transaction value
+# understands how to keep track of transaction value
 
 class Money
   def initialize(value = 0)
@@ -11,12 +11,12 @@ class Money
   end
 
   def to_s
-     "£"+sprintf( "%0.02f", @value)
+     "£"+sprintf( "%0.02f", value)
   end
 
   def +(other)
     raise "Can only add Instance of Money Class" unless other.is_a? Money
-    return Money.new(self.value + other.value)
+    return Money.new(value + other.value)
   end
 
 end

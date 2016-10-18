@@ -1,7 +1,8 @@
-# understands how to carry out transactions with money
+# understands how to transact with money
 require_relative 'money'
 require_relative 'statement'
 require 'date'
+
 class Account
 
   def initialize(money_class = Money, statement_object=Statement.new)
