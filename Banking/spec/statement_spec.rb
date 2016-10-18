@@ -3,8 +3,8 @@ require 'statement'
 describe Statement do
 
   subject(:statement) {described_class.new}
-  let (:credit) {double :money, to_s: "£500.00", value: 500}
-  let (:debit) {double :money, to_s: "£500.00", value: -500}
+  let (:credit) {double :money, to_s: "£500.00", formatted: "£500.00 ||", value: 500}
+  let (:debit) {double :money, to_s: "£500.00", formatted: "|| £500.00", value: -500}
 
   it 'prints an empty statement initially' do
     expect(statement.to_s).to eq("date || credit || debit || balance\n")

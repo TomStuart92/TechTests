@@ -6,17 +6,26 @@ class Money
    @value = value
   end
 
-  def value
-    @value
+  def to_s
+    "£"+sprintf( "%0.02f", value)
   end
 
-  def to_s
-     "£"+sprintf( "%0.02f", value)
+  def formatted
+    value < 0 ? "|| #{self}" : "#{self} ||"
   end
 
   def +(other)
     raise "Can only add Instance of Money Class" unless other.is_a? Money
-    return Money.new(value + other.value)
+    return Money.new(value + other.get_value)
   end
 
+  protected
+
+  def get_value
+    value
+  end
+
+  private
+
+  attr_reader :value
 end

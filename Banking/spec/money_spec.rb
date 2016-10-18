@@ -7,25 +7,29 @@ describe Money do
   let(:minus_amount) {described_class.new(-500)}
 
   it 'has a value in pence' do
-    expect(money.value).to eq(1000)
+    expect(money.to_s).to eq("£1000.00")
   end
 
   it 'raises error if value is non integer' do
     expect{Money.new("Value")}.to raise_error("Please Provide Integer Value")
   end
 
-  it 'has a string formatted value in pounds' do
-    expect(money.to_s).to eq("£1000.00")
+  it 'has a string formatted value in pounds for credits' do
+    expect(money.formatted).to eq("£1000.00 ||")
+  end
+
+  it 'has a string formatted value in pounds for debits' do
+    expect(minus_amount.formatted).to eq("|| £-500.00 ")
   end
 
   it 'can add two money values together' do
     result = money + add_amount
-    expect(result.value).to eq(3000)
+    expect(result.to_s).to eq("£3000.00")
   end
 
   it 'can minus two money values' do
     result = money + minus_amount
-    expect(result.value).to eq(500)
+    expect(result.to_s).to eq("£500.00")
   end
 
   it 'raises on other class addition' do
