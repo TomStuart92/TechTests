@@ -1,7 +1,7 @@
 golden_master = File.read("./spec/features/golden_master.txt")
 golden_master_lines = golden_master.split("\n")
 
-`ruby ./spec/test_fixture.rb`
+`ruby ./spec/features/test_fixture.rb`
 current_output = File.read("./spec/features/current_run.txt")
 current_output_lines = current_output.split("\n")
 
